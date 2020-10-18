@@ -14,7 +14,12 @@ def getMovieUrl(movieName):
     if res.status_code==200:
         html_content=requests.get(url).text
         soup = BeautifulSoup(html_content, "html.parser")
-        movieUrl=soup.find_all('iframe')[0]['src']
+        try:
+            movieUrl=soup.find_all('iframe')[0]['src']
+        except Exception as e:
+            movieUrl=soup.find_all('tr')[1].find_all('a',href=True)
+            for a in movieUrl:
+                movieUrl=a['href']
         return movieUrl
     return movieUrl
             
