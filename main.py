@@ -1,12 +1,12 @@
 from bs4 import BeautifulSoup
 import requests
+import os
 from flask import Flask
 from flask import request
 app = Flask(__name__)
 import json
 
-
-BASE_URL="https://uwatchfree.mx"
+BASE_URL=os.environ["base_url"]
 def getMovieUrl(movieName):
     movieUrl=""
     url=BASE_URL+"/"+movieName
