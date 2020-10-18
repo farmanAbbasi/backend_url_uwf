@@ -37,6 +37,12 @@ def loadData():
 @app.route('/', methods=['GET'])
 def getData():
     return json.dumps({"msg": "hello world from uwf"})
+
+@app.route('/tmdb', methods=['GET'])
+def getKeys():
+    keys=os.environ['tmdb_keys']
+    return json.dumps({"keys": keys})
+
 #http://127.0.0.1:5000/loadData?name1=harry-potter-and-the-order-of-the-phoenix-2007-full-movie
 if __name__ == '__main__':
     app.run()
