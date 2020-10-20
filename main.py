@@ -5,6 +5,8 @@ from flask import Flask
 from flask import request
 app = Flask(__name__)
 import json
+from flask_cors import CORS, cross_origin
+CORS(app)
 
 BASE_URL=os.environ["base_url"]
 def getMovieUrl(movieName):
