@@ -34,7 +34,7 @@ def loadData():
     #if got the url 
     if(finalName!=""):
         return json.dumps({"url": finalName})
-    return fileName
+    return finalName
 
 @app.route('/', methods=['GET'])
 def getData():
