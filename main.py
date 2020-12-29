@@ -13,12 +13,11 @@ def getMovieUrl(movieName):
     movieUrl=""
     url=BASE_URL+"/"+movieName
     res = requests.get(url)
-    html_content=res.text
-    soup = BeautifulSoup(html_content, "html.parser")
-    return soup
+    return res.status_code
     if res.status_code==200:
         html_content=requests.get(url).text
         soup = BeautifulSoup(html_content, "html.parser")
+        print(soup)
         try:
             movieUrl=soup.find_all('iframe')[0]['src']
         except Exception as e:
@@ -34,11 +33,10 @@ def getMovieUrl(movieName):
 def loadData():
     name=request.args.get('name1')
     finalName=getMovieUrl(name)
-    finalName="SASAS"+finalName
     #if got the url 
     if(finalName!=""):
         return json.dumps({"url": finalName})
-    return finalName
+    return ""
 
 @app.route('/', methods=['GET'])
 def getData():
