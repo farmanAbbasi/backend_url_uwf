@@ -13,12 +13,11 @@ def getMovieUrl(movieName):
     movieUrl=""
     url=BASE_URL+"/"+movieName
     res = requests.get(url)
+    return res
     print(res.status_code)
     if res.status_code==200:
         html_content=requests.get(url).text
         soup = BeautifulSoup(html_content, "html.parser")
-        print(soup)
-        return res.soup_code+" "+soup
         try:
             movieUrl=soup.find_all('iframe')[0]['src']
         except Exception as e:
