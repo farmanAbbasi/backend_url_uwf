@@ -13,7 +13,7 @@ def getMovieUrl(movieName):
     movieUrl=""
     url=BASE_URL+"/"+movieName
     res = requests.get(url)
-    return res.status_code
+    return res.text
     if res.status_code==200:
         html_content=requests.get(url).text
         soup = BeautifulSoup(html_content, "html.parser")
