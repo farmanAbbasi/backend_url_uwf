@@ -34,6 +34,7 @@ def getMovieUrl(movieName):
 def loadData():
     name=request.args.get('name1')
     finalName=getMovieUrl(name)
+    finalName="SASAS"+finalName
     #if got the url 
     if(finalName!=""):
         return json.dumps({"url": finalName})
