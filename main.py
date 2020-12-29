@@ -12,11 +12,10 @@ BASE_URL=os.environ["base_url"]
 def getMovieUrl(movieName):
     movieUrl=""
     url=BASE_URL+"/"+movieName
-    url="https://www.uwatchfree.bz/2013/12/harry-potter-and-the-order-of-the-phoenix-2007-full-movie/"
-    res = requests.get(url)
-    return res.text
+    res = requests.get(url,headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:79.0) Gecko/20100101 Firefox/79.0'})
+    return res.status_code
     if res.status_code==200:
-        html_content=requests.get(url).text
+        html_content=res.text
         soup = BeautifulSoup(html_content, "html.parser")
         print(soup)
         try:
